@@ -36,6 +36,23 @@ img.responsive {
   width: 100%;
 }
 
+.sign-in {
+  height: 600px;
+
+  .sign-in-action {
+    background-color: #FBC02D;
+    color: #fefefe;
+  }
+
+  .sign-in-action:hover {
+    background-color: #FFA000;
+  }
+  
+  p {
+    text-align: center;
+  }
+}
+
 .sessions {
   .filter-tabs .md-active {
     background-color: #1A237E!important;
