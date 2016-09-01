@@ -1,0 +1,94 @@
+<md-dialog>
+  <md-toolbar>
+    <h2 class="md-toolbar-tools">
+      <span>Session</span>
+    </h2>
+  </md-toolbar>
+
+  <md-dialog-content layout-padding>
+    <form name="sessionForm">
+      <div layout="column" layout-xs="column" layout-sm="column" layout-align="space-between">
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Session Type</label>
+            <md-select ng-model="session.type">
+              <md-option ng-repeat="type in sessionTypes" value="{{type.name}}">
+                {{type.name}}
+              </md-option>
+            </md-select>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Code</label>
+            <input required name="session.code" ng-model="session.code" />
+            <div class="hint" ng-if="showHints">Ex: 'Session W02' for the second webinar session or Session P05 for the 5:th panel discussion.</div>
+            <div ng-messages="session.title.$error" ng-if="!showHints">
+              <div ng-message="required">Code is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Title</label>
+            <input required name="session.title" ng-model="session.title" />
+            <div class="hint" ng-if="showHints"></div>
+            <div ng-messages="session.title.$error" ng-if="!showHints">
+              <div ng-message="required">Title is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Presenters</label>
+            <input name="session.presenters" ng-model="session.presenters" />
+            <div class="hint" ng-if="showHints">You can list the name of the presenters here. Ex: Sven Svensson, Anders Andersson and Anna Johansson</div>
+            <div ng-messages="session.presenters.$error" ng-if="!showHints">
+              <div ng-message="required">Presenters are required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Description</label>
+            <textarea ng-model="session.description" md-maxlength="500" rows="5" md-select-on-focus></textarea>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-datepicker ng-model="session.startDate" md-placeholder="Start Date"></md-datepicker>
+          <md-datepicker ng-model="session.endDate" md-placeholder="End Date"></md-datepicker>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Poster URL</label>
+            <input required name="session.posterUrl" ng-model="session.posterUrl" />
+            <div class="hint" ng-if="showHints"></div>
+            <div ng-messages="session.posterUrl.$error" ng-if="!showHints">
+              <div ng-message="required">Poster URL is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container class="md-block" flex-gt-sm>
+            <label>Video URL</label>
+            <input required name="session.videoUrl" ng-model="session.videoUrl" />
+            <div class="hint" ng-if="showHints"></div>
+            <div ng-messages="session.videoUrl.$error" ng-if="!showHints">
+              <div ng-message="required">Video URL is required</div>
+            </div>
+          </md-input-container>
+        </div>
+        <div layout-gt-sm="row">
+          <md-input-container>
+            <md-switch ng-model="session.allowComments">Allow comments</md-switch>
+          </md-input-container>
+        </div>
+      </div>
+    </form>
+  </md-dialog-content>
+  <md-dialog-actions>
+    <md-button ng-click="closeDialog()" class="">Cancel</md-button>
+    <md-button ng-click="addSession(session); closeDialog()" class="md-primary">Publish</md-button>
+  </md-dialog-actions>
+
+</md-dialog>

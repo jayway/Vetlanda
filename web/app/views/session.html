@@ -1,0 +1,35 @@
+<md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+
+<md-tabs class="md-primary md-hue-2">
+  <md-tab ng-click="chosenType='Webinar'" ui-sref="/sessions">&lt; Back</md-tab>
+</md-tabs>
+
+<div layout="row" layout-align="center center">
+
+  <div class="session" layout="column">
+    <div class="md-accent md-hue-1" flex flex-order="2" layout-padding>
+      <div class="heading">
+        <div class="md-caption"><span class="type">{{session.type}}</span> | <span class="code">{{session.code}}</span>
+        </div>
+        <h4 class="md-headline headline">{{session.title}}</h4>
+      </div>
+      <div class="body">
+        <div class="presenters" ng-show="session.presenters">With {{session.presenters}}</div>
+        <div class="">{{session.description}}</div>
+      </div>
+    </div>
+
+    <div class="" flex flex-order="1">
+      <video id="my-video" class="video-js vjs-default-skin vjs-big-play-centered" data-setup="" autoplay controls
+             fluid preload="auto" poster="{{session.posterUrl}}">
+        <source type='video/mp4'>
+        <p class="vjs-no-js">
+          To view this video please enable JavaScript, and consider upgrading to a web browser that
+          <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a>
+        </p>
+      </video>
+    </div>
+
+    <div ng-show="session.allowComments" flex flex-order="4" id="embedded-feed" style="height:600px;" ng-cloak=""></div>
+  </div>
+</div>

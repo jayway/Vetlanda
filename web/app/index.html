@@ -1,0 +1,158 @@
+<!doctype html>
+<!--[if lt IE 7]>
+<html class="no-js lt-ie9 lt-ie8 lt-ie7"> <![endif]-->
+<!--[if IE 7]>
+<html class="no-js lt-ie9 lt-ie8"> <![endif]-->
+<!--[if IE 8]>
+<html class="no-js lt-ie9"> <![endif]-->
+<!--[if gt IE 8]><!-->
+<html class="no-js"> <!--<![endif]-->
+<head>
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <title></title>
+  <meta name="description" content="">
+  <meta name="viewport" content="width=device-width">
+  <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
+
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,500,700,400italic">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/icon?family=Material+Icons">
+  <link rel="stylesheet"
+        href="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.css">
+  <link rel="stylesheet" href="bower_components/angular-material/angular-material.min.css">
+  <link rel="stylesheet" href="bower_components/animate.css/animate.css">
+  <link rel="stylesheet" href="bower_components/magic/magic.css">
+  <link rel="stylesheet" href="bower_components/video.js/dist/video-js.css">
+  <!-- build:css(.tmp) styles/main.css -->
+  <link rel="stylesheet" href="styles/main.css">
+  <!-- endbuild -->
+
+</head>
+
+<body ng-app="vetlandaWebApp" data-ng-controller="AuthCtrl" class="ng-cloak">
+<!--[if lt IE 7]>
+<p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade
+  your browser</a> to improve your experience.</p>
+<![endif]-->
+
+<!--[if lt IE 9]>
+<script src="bower_components/es5-shim/es5-shim.js"></script>
+<script src="bower_components/json3/lib/json3.min.js"></script>
+<![endif]-->
+
+<!-- Add your site or application content here -->
+
+<md-toolbar class="md-accent md-hue-1">
+  <div class="md-toolbar-tools" ng-cloak>
+    <h4 class="project-title">
+      <a ui-sref="index">
+        <span class="md-headline">VETLANDA</span>
+      </a>
+    </h4>
+    <span flex></span>
+    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
+      <i class="material-icons">menu</i>
+    </md-button>
+  </div>
+</md-toolbar>
+<md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+
+<md-content class="main-view-container ui-view class=" ng-cloak"></md-content>
+
+<md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="2">
+  <md-content>
+    <md-toolbar class="md-theme-pink">
+      <h1 class="md-toolbar-tools"></h1>
+    </md-toolbar>
+    <md-list flex>
+      <md-list-item class="md-2-line" ui-sref="/sessions" ng-click="close()">
+        <div class="md-list-item-text" layout="column">
+          <h3>Sessions</h3>
+        </div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-2-line" ui-sref="/admin" ng-click="close()">
+        <div class="md-list-item-text" layout="column">
+          <h3>Admin</h3>
+        </div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-2-line" ng-click="signIn()" ng-show="!user">
+        <div class="md-list-item-text" layout="column">
+          <h3>Sign In</h3>
+        </div>
+      </md-list-item>
+      <md-divider></md-divider>
+      <md-list-item class="md-2-line" ng-click="signOut()" ng-show="user">
+        <div class="md-list-item-text" layout="column">
+          <h3>Sign Out</h3>
+        </div>
+      </md-list-item>
+      <md-divider></md-divider>
+    </md-list>
+  </md-content>
+</md-sidenav>
+
+<!-- Google Analytics: change UA-XXXXX-X to be your site's ID -->
+<script>
+  (function (i, s, o, g, r, a, m) {
+    i['GoogleAnalyticsObject'] = r;
+    i[r] = i[r] || function () {
+              (i[r].q = i[r].q || []).push(arguments)
+            }, i[r].l = 1 * new Date();
+    a = s.createElement(o),
+            m = s.getElementsByTagName(o)[0];
+    a.async = 1;
+    a.src = g;
+    m.parentNode.insertBefore(a, m)
+  })(window, document, 'script', '//www.google-analytics.com/analytics.js', 'ga');
+
+  ga('create', 'UA-XXXXX-X');
+  ga('send', 'pageview');
+</script>
+
+<!-- build:js scripts/modules.js -->
+<script src="bower_components/jquery/dist/jquery.js"></script>
+<script src="bower_components/angular/angular.js"></script>
+<script src="bower_components/angular-animate/angular-animate.js"></script>
+<script src="bower_components/angular-aria/angular-aria.js"></script>
+<script src="bower_components/angular-resource/angular-resource.js"></script>
+<script src="bower_components/angular-cookies/angular-cookies.js"></script>
+<script src="bower_components/angular-sanitize/angular-sanitize.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.js"></script>
+<script src="bower_components/angular-material/angular-material.js"></script>
+<script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
+<script src="bower_components/angularfire/dist/angularfire.js"></script>
+<script src="bower_components/angulargrid/angulargrid.js"></script>
+<script src="bower_components/lodash/lodash.js"></script>
+<script src="bower_components/firebase/firebase.js"></script>
+<script src="bower_components/video.js/dist/video.js"></script>
+<!-- endbuild -->
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+<script src="scripts/app.js"></script>
+<script src="scripts/controllers/sign-in.js"></script>
+<script src="scripts/controllers/auth.js"></script>
+<script src="scripts/services/sessions.js"></script>
+<script src="scripts/controllers/admin.js"></script>
+<script src="scripts/controllers/admin-sessions.js"></script>
+<script src="scripts/controllers/sessions.js"></script>
+<script src="scripts/controllers/session.js"></script>
+<!-- endbuild -->
+
+<script>
+  // Initialize Firebase
+  var config = {
+    apiKey: "AIzaSyBOaLii6bLwZRj96x_oiNthmnj4otN7Rk8",
+    authDomain: "vetlanda-e5ad6.firebaseapp.com",
+    databaseURL: "https://vetlanda-e5ad6.firebaseio.com",
+    storageBucket: ""
+  };
+  firebase.initializeApp(config);
+</script>
+
+<script type="text/javascript" data-app-id="lc7LHyVoPmgV9fW2N32vHA"
+        src="https://c64.assets-yammer.com/assets/platform_js_sdk.js"></script>
+
+</body>
+</html>

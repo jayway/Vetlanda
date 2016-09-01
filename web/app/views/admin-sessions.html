@@ -1,0 +1,26 @@
+<md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
+
+<div class="admin-section" md-whiteframe>
+  <md-toolbar>
+    <h2 class="md-toolbar-tools">
+      <span>Sessions</span>
+    </h2>
+    <md-button class="md-fab add-admin-fab toolbar-fab md-hue-3" ng-click="openAddDialog($event)">
+      <md-icon class="material-icons">add</md-icon>
+    </md-button>
+  </md-toolbar>
+  <md-list>
+    <form name="sessionsForm">
+      <md-list-item class="md-2-line" ng-click="null" ng-repeat="session in sessions">
+        <div class="md-list-item-text" layout="column">
+          <h3>{{session.title}}</h3>
+          <h4>{{session.startDate | date}} - {{session.endDate | date}}</h4>
+        </div>
+        <span flex></span>
+        <md-button class="md-fab md-mini md-hue-3" ng-click="showDeleteConfirm($event, session)">
+          <md-icon class="material-icons">delete</md-icon>
+        </md-button>
+      </md-list-item>
+    </form>
+  </md-list>
+</div>
