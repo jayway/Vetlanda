@@ -17,6 +17,33 @@
         <div class="presenters" ng-show="session.presenters">With {{session.presenters}}</div>
         <div class="">{{session.description}}</div>
       </div>
+      <div class="footer">
+        <div layout="column" layout-gt-xs="row">
+          <div layout="row" flex>
+            <div flex="9" layout="row">
+              <div flex>
+                <md-icon class="md-48 md-accent md-hue-2">date_range</md-icon>
+              </div>
+            </div>
+            <div class="open-status" flex="80" flex-gt-sm="60" layout="column">
+              <div flex class="md-caption">
+                <span class="uppercase">Session open until</span>
+              </div>
+              <div flex><span class="uppercase md-body-2 date">Monday 1/10 at 12am</span></div>
+            </div>
+          </div>
+          <div layout="row" layout-align="center center" flex="40" class="conversation-data">
+            <div flex="50">
+              <md-icon class="md-32 md-accent md-hue-2">account_box</md-icon>
+              {{session.participantsCount}} participants
+            </div>
+            <div flex="50">
+              <md-icon class="md-32 md-accent md-hue-2">comment</md-icon>
+              {{session.groupConversationCount}} comments
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
 
     <div class="" flex flex-order="1">
