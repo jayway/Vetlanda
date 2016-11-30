@@ -30,7 +30,7 @@
           </div>
           <div class="body">
             <div class="presenters" ng-show="session.presenters">With {{session.presenters}}</div>
-            <div class="">{{session.description}}</div>
+            <div class=""><span ng-bind-html="session.description | limitTo:300">...</span></div>
           </div>
           <div class="footer">
             <div layout="column" layout-gt-xs="row">
@@ -62,7 +62,7 @@
         <div flex-gt-sm="60" flex-order="1" flex-order-gt-sm="3">
           <div class="poster-container md-media-lg">
             <a ui-sref="/session({sessionId:session.$id})">
-              <img class="poster responsive" src="{{session.posterUrl}}">
+              <img class="poster responsive" ng-src="{{session.posterUrl}}">
             </a>
             <div layout="row" layout-align="center center" hide-sm hide-xs flex class="alpha60 conversation-data">
               <div flex="70">

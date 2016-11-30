@@ -16,7 +16,7 @@
       </div>
       <div class="body">
         <div class="presenters" ng-show="session.presenters">With {{session.presenters}}</div>
-        <div class="">{{session.description}}</div>
+        <div class=""><span ng-bind-html="session.description"></span></div>
       </div>
       <div class="footer">
         <div layout="column" layout-gt-xs="row">

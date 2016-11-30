@@ -1,6 +1,6 @@
 'use strict';
 
-app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseObject, $state, $mdDialog, sessionsService) {
+app.controller('AdminSessionsCtrl', function ($scope, $q, $firebaseArray, $firebaseObject, $state, $mdDialog, sessionsService) {
   $scope.loading = true;
   $scope.sessionTypes = sessionsService.getSessionTypes();
   $scope.sessions = sessionsService.getSessions();
@@ -28,6 +28,7 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
   };
 
   $scope.openAddDialog = function () {
+    $scope.session = {};
     $scope.showHints = true;
     $mdDialog.show({
       clickOutsideToClose: true,
@@ -41,27 +42,51 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
         };
 
         $scope.addSession = function (session) {
-          var clonedSession = _.clone(session);
-          if (clonedSession.startDate) {
-            clonedSession.startDate = session.startDate.getTime();
+          var clone = _.clone(session);
+          if (clone.startDate) {
+            clone.startDate = session.startDate.getTime();
           }
-          if (clonedSession.endDate) {
-            clonedSession.endDate = session.endDate.getTime();
+          if (clone.endDate) {
+            clone.endDate = session.endDate.getTime();
           }
-          clonedSession.createdAt = new Date().getTime();
-          clonedSession.modifiedAt = new Date().getTime();
-          addYammerSession(clonedSession);
-          //$scope.closeDialog();
+          clone.createdAt = new Date().getTime();
+          clone.modifiedAt = new Date().getTime();
+          addYammerSession(clone).then(function (group) {
+            clone.yammerGroupId = group.id || null;
+            clone.yammerFeedId = group.feedId || null;
+            $scope.sessions.$add(clone).then(function () {
+              $scope.closeDialog();
+            }).catch(function(error) {
+              console.log('Error when adding session: ' + error);
+            });
+          });
         };
 
       }
     });
   };
 
+  var addYammerSession = function (session) {
+    var defer = $q.defer();
+    yam.platform.request({
+      url: "groups.json?name=" + session.title + "&private=true",
+      method: "POST",
+      data: {},
+      success: function (group) {
+        defer.resolve(group);
+      },
+      error: function (error) {
+        console.error("There was an error with the request.");
+        defer.reject(error);
+      }
+    });
+    return defer.promise;
+  };
+
   $scope.openEditDialog = function (session) {
     $scope.session = session;
     $scope.session.startDate = new Date(session.startDate);
-    $scope.session.endDate = new Date(session.startDate);
+    $scope.session.endDate = new Date(session.endDate);
     $scope.showHints = true;
     $mdDialog.show({
       clickOutsideToClose: true,
@@ -75,53 +100,17 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
         };
 
         $scope.editSession = function (session) {
-          var clonedSession = _.clone(session);
-          if (clonedSession.startDate) {
-            clonedSession.startDate = session.startDate.getTime();
+          if (session.startDate) {
+            session.startDate = session.startDate.getTime();
           }
-          if (clonedSession.endDate) {
-            clonedSession.endDate = session.endDate.getTime();
+          if (session.endDate) {
+            session.endDate = session.endDate.getTime();
           }
-          clonedSession.modifiedAt = new Date().getTime();
-          updateYammerSession(clonedSession);
+          session.modifiedAt = new Date().getTime();
+          $scope.sessions.$save(session);
+          $scope.closeDialog();
         };
 
-      }
-    });
-  };
-
-  var addYammerSession = function (session) {
-    yam.platform.request({
-      url: "groups.json?name=" + session.title + "&private=true",
-      method: "POST",
-      data: {},
-      success: function (group) {
-        session.yammerGroupId = group.id;
-        session.yammerFeedId = group.feedId;
-        console.dir(group);
-        console.dir(session);
-        $scope.sessions.$add(session);
-      },
-      error: function (group) {
-        console.error("There was an error with the request.");
-      }
-    });
-  };
-
-  var updateYammerSession = function (session) {
-    yam.platform.request({
-      url: "groups.json?name=" + session.title + "&private=true",
-      method: "PUT",
-      data: {},
-      success: function (group) {
-        session.yammerGroupId = group.id;
-        session.yammerFeedId = group.feedId;
-        console.dir(group);
-        console.dir(session);
-        $scope.sessions.$save(session);
-      },
-      error: function (group) {
-        console.error("There was an error with the request.");
       }
     });
   };
