@@ -10,7 +10,8 @@ var app = angular.module('vetlandaWebApp', [
   'ngMaterial',
   'ngAnimate',
   'angularGrid',
-  'LocalStorageModule'
+  'LocalStorageModule',
+  'angularTrix'
 ])
   .config(function ($stateProvider, $urlRouterProvider, $mdThemingProvider, localStorageServiceProvider) {
     localStorageServiceProvider.setPrefix('vetlandaWebApp');

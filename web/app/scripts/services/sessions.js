@@ -2,8 +2,8 @@
 
 app.factory('sessionsService', function ($firebaseArray) {
   var _sessionTypes = [{
-    abbr: 'webinar',
-    name: 'Webinar'
+    abbr: 'webinars',
+    name: 'Webinars'
   }, {
     abbr: 'panels',
     name: 'Panels'

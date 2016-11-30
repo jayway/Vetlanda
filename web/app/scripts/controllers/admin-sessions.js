@@ -33,7 +33,7 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
       clickOutsideToClose: true,
       scope: $scope,
       preserveScope: true,
-      templateUrl: 'views/admin-sessions.dialog.html',
+      templateUrl: 'views/admin-add-session.dialog.html',
       parent: angular.element(document.body),
       controller: function DialogController($scope, $mdDialog) {
         $scope.closeDialog = function () {
@@ -49,17 +49,49 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
             clonedSession.endDate = session.endDate.getTime();
           }
           clonedSession.createdAt = new Date().getTime();
-          addSessionToYammer(clonedSession);
-          $scope.closeDialog();
+          clonedSession.modifiedAt = new Date().getTime();
+          addYammerSession(clonedSession);
+          //$scope.closeDialog();
         };
 
       }
     });
   };
 
-  var addSessionToYammer = function (session) {
+  $scope.openEditDialog = function (session) {
+    $scope.session = session;
+    $scope.session.startDate = new Date(session.startDate);
+    $scope.session.endDate = new Date(session.startDate);
+    $scope.showHints = true;
+    $mdDialog.show({
+      clickOutsideToClose: true,
+      scope: $scope,
+      preserveScope: true,
+      templateUrl: 'views/admin-edit-session.dialog.html',
+      parent: angular.element(document.body),
+      controller: function DialogController($scope, $mdDialog) {
+        $scope.closeDialog = function () {
+          $mdDialog.hide();
+        };
+
+        $scope.editSession = function (session) {
+          var clonedSession = _.clone(session);
+          if (clonedSession.startDate) {
+            clonedSession.startDate = session.startDate.getTime();
+          }
+          if (clonedSession.endDate) {
+            clonedSession.endDate = session.endDate.getTime();
+          }
+          clonedSession.modifiedAt = new Date().getTime();
+          updateYammerSession(clonedSession);
+        };
+
+      }
+    });
+  };
+
+  var addYammerSession = function (session) {
     yam.platform.request({
-      // yam.request({
       url: "groups.json?name=" + session.title + "&private=true",
       method: "POST",
       data: {},
@@ -67,6 +99,7 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
         session.yammerGroupId = group.id;
         session.yammerFeedId = group.feedId;
         console.dir(group);
+        console.dir(session);
         $scope.sessions.$add(session);
       },
       error: function (group) {
@@ -74,4 +107,23 @@ app.controller('AdminSessionsCtrl', function ($scope, $firebaseArray, $firebaseO
       }
     });
   };
+
+  var updateYammerSession = function (session) {
+    yam.platform.request({
+      url: "groups.json?name=" + session.title + "&private=true",
+      method: "PUT",
+      data: {},
+      success: function (group) {
+        session.yammerGroupId = group.id;
+        session.yammerFeedId = group.feedId;
+        console.dir(group);
+        console.dir(session);
+        $scope.sessions.$save(session);
+      },
+      error: function (group) {
+        console.error("There was an error with the request.");
+      }
+    });
+  };
+
 });

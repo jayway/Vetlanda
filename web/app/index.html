@@ -23,6 +23,7 @@
   <link rel="stylesheet" href="bower_components/animate.css/animate.css">
   <link rel="stylesheet" href="bower_components/magic/magic.css">
   <link rel="stylesheet" href="bower_components/video.js/dist/video-js.css">
+  <link rel="stylesheet" href="bower_components/trix/dist/trix.css">
 
   <!-- build:css(.tmp) styles/main.css -->
   <link rel="stylesheet" href="styles/main.css">
@@ -45,15 +46,15 @@
 
 <md-toolbar class="md-accent md-hue-1">
   <div class="md-toolbar-tools" ng-cloak>
+    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
+      <i class="material-icons">menu</i>
+    </md-button>
     <h4 class="project-title">
       <a ui-sref="index">
         <span class="md-headline">VETLANDA</span>
       </a>
     </h4>
     <span flex></span>
-    <md-button class="md-icon-button" aria-label="Menu" ng-click="toggleMenu()">
-      <i class="material-icons">menu</i>
-    </md-button>
   </div>
 </md-toolbar>
 <md-progress-linear md-mode="indeterminate" ng-show="loading"></md-progress-linear>
@@ -63,33 +64,25 @@
 <md-sidenav class="md-sidenav-left" md-component-id="left" md-whiteframe="2">
   <md-content>
     <md-toolbar class="md-theme-pink">
-      <h1 class="md-toolbar-tools"></h1>
+      <h1 class="md-toolbar-tools">Vetlanda</h1>
     </md-toolbar>
     <md-list flex>
-      <md-list-item class="md-2-line" ui-sref="/sessions" ng-click="close()">
-        <div class="md-list-item-text" layout="column">
-          <h3>Sessions</h3>
-        </div>
+      <md-list-item class="" ui-sref="/sessions" ng-click="close()">
+        <md-icon class="material-icon">subject</md-icon>
+        <p>Sessions</p>
       </md-list-item>
-      <md-divider></md-divider>
-      <md-list-item class="md-2-line" ui-sref="/admin" ng-click="close()">
-        <div class="md-list-item-text" layout="column">
-          <h3>Admin</h3>
-        </div>
+      <md-list-item class="" ui-sref="/admin" ng-click="close()">
+        <md-icon class="material-icon">edit</md-icon>
+        <p>Admin</p>
       </md-list-item>
-      <md-divider></md-divider>
-      <md-list-item class="md-2-line" ng-click="signIn()" ng-show="!user">
-        <div class="md-list-item-text" layout="column">
-          <h3>Sign In</h3>
-        </div>
+      <md-list-item class="" ng-click="signIn()" ng-show="!user">
+        <md-icon class="material-icon">fingerprint</md-icon>
+        <p>Sign In</p>
       </md-list-item>
-      <md-divider></md-divider>
-      <md-list-item class="md-2-line" ng-click="signOut()" ng-show="user">
-        <div class="md-list-item-text" layout="column">
-          <h3>Sign Out</h3>
-        </div>
+      <md-list-item class="" ng-click="signOut()" ng-show="user">
+        <md-icon class="material-icon">power_settings_new</md-icon>
+        <p>Sign Out</p>
       </md-list-item>
-      <md-divider></md-divider>
     </md-list>
   </md-content>
 </md-sidenav>
@@ -124,6 +117,8 @@
 <script src="bower_components/angular-local-storage/dist/angular-local-storage.min.js"></script>
 <script src="bower_components/angularfire/dist/angularfire.js"></script>
 <script src="bower_components/angulargrid/angulargrid.js"></script>
+<script src="bower_components/trix/dist/trix.js"></script>
+<script src="bower_components/angular-trix/dist/angular-trix.js"></script>
 <script src="bower_components/underscore/underscore.js"></script>
 <script src="bower_components/firebase/firebase.js"></script>
 <script src="bower_components/video.js/dist/video.js"></script>
