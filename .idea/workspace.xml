@@ -1,26 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="ChangeListManager">
-    <list default="true" id="78d56886-71aa-48c3-a616-08da22f150c8" name="Default" comment="">
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/.name" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/Vetlanda.iml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/web/app/views/admin-edit-session.dialog.html" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/modules.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/vcs.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/watcherTasks.xml" />
-      <change type="NEW" beforePath="" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MOVED" beforePath="$PROJECT_DIR$/web/app/views/admin-sessions.dialog.html" afterPath="$PROJECT_DIR$/web/app/views/admin-add-session.dialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/views/admin-sessions.html" afterPath="$PROJECT_DIR$/web/app/views/admin-sessions.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/scripts/controllers/admin-sessions.js" afterPath="$PROJECT_DIR$/web/app/scripts/controllers/admin-sessions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/scripts/app.js" afterPath="$PROJECT_DIR$/web/app/scripts/app.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/bower.json" afterPath="$PROJECT_DIR$/web/bower.json" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/index.html" afterPath="$PROJECT_DIR$/web/app/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/styles/main.scss" afterPath="$PROJECT_DIR$/web/app/styles/main.scss" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/views/session.html" afterPath="$PROJECT_DIR$/web/app/views/session.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/app/scripts/services/sessions.js" afterPath="$PROJECT_DIR$/web/app/scripts/services/sessions.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/web/.idea/workspace.xml" afterPath="$PROJECT_DIR$/web/.idea/workspace.xml" />
-    </list>
+    <list default="true" id="78d56886-71aa-48c3-a616-08da22f150c8" name="Default" comment="" />
     <ignored path="Vetlanda.iws" />
     <ignored path=".idea/workspace.xml" />
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -46,8 +27,8 @@
             <state vertical-scroll-proportion="-16.0">
               <caret line="119" column="49" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
               <folding>
-                <marker date="1480497700000" expanded="true" signature="1490:1641" placeholder="..." />
-                <marker date="1480497700000" expanded="true" signature="1583:1609" placeholder="..." />
+                <marker date="1480504103000" expanded="true" signature="1490:1641" placeholder="..." />
+                <marker date="1480504103000" expanded="true" signature="1583:1609" placeholder="..." />
               </folding>
             </state>
           </provider>
@@ -149,8 +130,8 @@
         <option value="$PROJECT_DIR$/web/app/views/admin-add-session.dialog.html" />
         <option value="$PROJECT_DIR$/web/app/views/admin-edit-session.dialog.html" />
         <option value="$PROJECT_DIR$/web/app/views/admin-sessions.html" />
-        <option value="$PROJECT_DIR$/web/app/scripts/controllers/admin-sessions.js" />
         <option value="$PROJECT_DIR$/web/app/scripts/services/sessions.js" />
+        <option value="$PROJECT_DIR$/web/app/scripts/controllers/admin-sessions.js" />
       </list>
     </option>
   </component>
@@ -320,8 +301,8 @@
         <state vertical-scroll-proportion="0.0">
           <caret line="0" column="0" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <marker date="1480497700000" expanded="true" signature="1490:1641" placeholder="..." />
-            <marker date="1480497700000" expanded="true" signature="1583:1609" placeholder="..." />
+            <marker date="1480504103000" expanded="true" signature="1490:1641" placeholder="..." />
+            <marker date="1480504103000" expanded="true" signature="1583:1609" placeholder="..." />
           </folding>
         </state>
       </provider>
@@ -347,8 +328,8 @@
         <state vertical-scroll-proportion="-16.0">
           <caret line="119" column="49" selection-start-line="119" selection-start-column="49" selection-end-line="119" selection-end-column="49" />
           <folding>
-            <marker date="1480497700000" expanded="true" signature="1490:1641" placeholder="..." />
-            <marker date="1480497700000" expanded="true" signature="1583:1609" placeholder="..." />
+            <marker date="1480504103000" expanded="true" signature="1490:1641" placeholder="..." />
+            <marker date="1480504103000" expanded="true" signature="1583:1609" placeholder="..." />
           </folding>
         </state>
       </provider>
